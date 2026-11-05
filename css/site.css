@@ -44,6 +44,14 @@ p,h1,h2,dl,dd{margin:0}
 .giovedi .lead{max-width:440px}
 .giovedi dl{flex:999 1 480px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--gap-lg)}
 .giovedi dl>div{display:flex;flex-direction:column;gap:var(--stack-xs)}
+/* Desktop: Dove / Indirizzo / Orario partono alla stessa altezza del paragrafo */
+@media (min-width:900px){
+  .giovedi .wrap{display:grid;grid-template-columns:minmax(360px,440px) minmax(0,1fr);row-gap:var(--stack-xs);align-items:start}
+  .giovedi .group,.giovedi .pair{display:contents}
+  .giovedi h2{grid-column:1;grid-row:1}
+  .giovedi .lead{grid-column:1;grid-row:2}
+  .giovedi dl{grid-column:2;grid-row:2}
+}
 
 /* Booking */
 .booking .wrap{display:flex;flex-wrap:wrap;gap:var(--section-sm) var(--gap-2xl);padding-block:var(--section-lg)}
@@ -69,3 +77,7 @@ p,h1,h2,dl,dd{margin:0}
   .vetrina [class*="--step-x"]{--step-x:2.5rem!important}
   .vetrina [class*="--step-y"]{--step-y:1.25rem!important}
 }
+
+/* Link: il preflight di vendor/bundle.css azzera colore e sottolineatura, li ripristino */
+main a,.footer a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+main a:hover,.footer a:hover{text-decoration-thickness:2px}
