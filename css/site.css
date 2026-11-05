@@ -30,7 +30,7 @@ p,h1,h2,dl,dd{margin:0}
 
 /* Carosello: pila in diagonale che esce dal bordo destro */
 .vetrina{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;padding:var(--inset-lg) 0 var(--section-sm);min-width:0}
-.vetrina-clip{overflow-x:clip;padding:0 0 var(--inset-xl)}
+.vetrina-clip{overflow-x:clip;padding:0 0 var(--inset-xl);touch-action:pan-y}
 .vetrina-inner{width:100%;padding-left:max(var(--inset-lg),calc((100% - 1272px) / 2));padding-right:var(--inset-lg)}
 .vetrina [class*="--cover-size"]{--cover-size:clamp(14rem,30vw,30rem)!important}
 .vetrina [class*="--step-x"]{--step-x:clamp(6rem,16vw,15rem)!important}
@@ -74,7 +74,7 @@ p,h1,h2,dl,dd{margin:0}
   .booking .wrap{padding-block:var(--section-md)}
   .contatti-links a{font-size:17px}
   .vetrina [class*="--cover-size"]{--cover-size:12rem!important}
-  .vetrina [class*="--step-x"]{--step-x:2.5rem!important}
+  .vetrina [class*="--step-x"]{--step-x:4rem!important}
   .vetrina [class*="--step-y"]{--step-y:1.25rem!important}
 }
 

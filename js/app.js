@@ -35,8 +35,36 @@
         setIdx(function (i) { return (i + step + n) % n; });
         acc = 0; lock = now + 380;
       }
+      /* Touch: lo swipe orizzontale fa girare la pila come la rotella su desktop.
+         touch-action:pan-y (in site.css) lascia lo scroll verticale alla pagina. */
+      var sx = null, sy = 0, tlock = 0;
+      function onTouchStart(e) {
+        if (e.touches.length !== 1 || (e.target.closest && e.target.closest('[role="region"]'))) { sx = null; return; }
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      }
+      function onTouchMove(e) {
+        if (sx === null) return;
+        var dx = sx - e.touches[0].clientX, dy = sy - e.touches[0].clientY;
+        if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
+        var now = Date.now();
+        if (now < tlock) return;
+        var step = dx > 0 ? 1 : -1;
+        setIdx(function (i) { return (i + step + n) % n; });
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY; tlock = now + 250;
+      }
+      function onTouchEnd() { sx = null; }
       area.addEventListener('wheel', onWheel, { passive: false });
-      return function () { area.removeEventListener('wheel', onWheel); };
+      area.addEventListener('touchstart', onTouchStart, { passive: true });
+      area.addEventListener('touchmove', onTouchMove, { passive: true });
+      area.addEventListener('touchend', onTouchEnd);
+      area.addEventListener('touchcancel', onTouchEnd);
+      return function () {
+        area.removeEventListener('wheel', onWheel);
+        area.removeEventListener('touchstart', onTouchStart);
+        area.removeEventListener('touchmove', onTouchMove);
+        area.removeEventListener('touchend', onTouchEnd);
+        area.removeEventListener('touchcancel', onTouchEnd);
+      };
     }, []);
 
     var items = SETS.slice(idx).concat(SETS.slice(0, idx));
