@@ -1,53 +1,30 @@
-/* LOCAMIMI semantic tokens (from the design system's tokens.json) */
+/* LOCAMIMI — token del design system per la landing.
+   Fonte: github.com/mimirossi/DesignSystem (tokens/*.tokens.json, src/index.css).
+   Colori (scale tonali + ruoli semantici Chiaro/Scuro), griglia e ruoli tipografici arrivano da vendor/bundle.css;
+   qui stanno i font e i token che il layout usa in CSS puro. */
+
 @font-face{font-family:'Bricolage Grotesque Variable';src:url('../fonts/bricolage-grotesque-latin-standard-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
 @font-face{font-family:'DAMN';src:url('../fonts/damn.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 
 :root{
-  --rosa-500:#fd4ad0;--rosa-700:#a0187c;--rosa-chiaro-200:#f3c3e6;--nero-900:#1c1c1c;
-  --background:#fffdf7;--foreground:#1c1c1c;
-  --card:#fff4fc;--card-foreground:#1c1c1c;
-  --popover:#fffdf7;--popover-foreground:#1c1c1c;
-  --primary:#a0187c;--primary-foreground:#fffdf7;
-  --secondary:#fae2f3;--secondary-foreground:#a0187c;
-  --muted:#f5f1e7;--muted-foreground:#595959;
-  --accent:#fae2f3;--accent-foreground:#1c1c1c;
-  --destructive:oklch(0.577 0.245 27.325);
-  --border:#e8e1d2;--input:#767676;--ring:#a0187c;--focus-gap:#fffdf7;
-  --link:#a0187c;--brand:#fd4ad0;--brand-soft:#f3c3e6;
-  --highlight:#ceff32;--highlight-foreground:#1c1c1c;--highlight-text:#496006;
-
   --font-sans:'Bricolage Grotesque Variable','Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;
   --font-display:'DAMN','Bricolage Grotesque Variable',Impact,sans-serif;
-  --type-scale:0.5;
 
-  --spacing:4px;
-  --inset-none:0px;--inset-xs:4px;--inset-sm:8px;--inset-md:16px;--inset-lg:24px;--inset-xl:32px;--inset-2xl:48px;
-  --gap-none:0px;--gap-xs:4px;--gap-sm:8px;--gap-md:16px;--gap-lg:24px;--gap-xl:32px;--gap-2xl:48px;
-  --stack-xs:4px;--stack-sm:8px;--stack-md:16px;--stack-lg:24px;--stack-xl:40px;--stack-2xl:64px;
+  /* Spacing — tokens/spacing.tokens.json */
+  --inset-none:0px;--inset-xs:4px;--inset-sm:8px;--inset-sm-md:12px;--inset-md:16px;--inset-lg:24px;--inset-xl:32px;--inset-2xl:48px;
+  --gap-none:0px;--gap-xs:4px;--gap-sm:8px;--gap-sm-md:12px;--gap-md:16px;--gap-lg:24px;--gap-xl:32px;--gap-2xl:48px;
+  --stack-none:0px;--stack-xs:4px;--stack-sm:8px;--stack-md:16px;--stack-lg:24px;--stack-xl:40px;--stack-2xl:64px;
   --section-sm:48px;--section-md:64px;--section-lg:96px;--section-xl:128px;
-  --spacing-inset-md:16px;--spacing-inset-lg:24px;--spacing-stack-md:16px;--spacing-stack-lg:24px;
 
-  --radius:12px;--radius-sm:7.2px;--radius-md:9.6px;--radius-xl:16.8px;--radius-2xl:21.6px;--radius-3xl:26.4px;--radius-4xl:31.2px;
-  --radius-control-2xs:6px;--radius-control-xs:9px;--radius-control-sm:10.5px;--radius-control-md:12px;--radius-control-lg:13.5px;
+  /* Radius e stroke — tokens/spacing.tokens.json */
+  --radius-none:0px;--radius-xs:4px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-2xl:32px;--radius-full:9999px;
+  --stroke-none:0px;--stroke-thin:1px;--stroke-default:2px;--stroke-strong:4px;
+
+  /* Breakpoint — tokens/breakpoints.tokens.json (solo riferimento: le media query non leggono variabili)
+     mobile 0–767 · tablet ≥768 · desktop ≥1024 */
 }
 
-.dark,[data-theme=dark]{
-  --background:#1c1c1c;--foreground:#fffdf7;
-  --card:#2b2b2b;--card-foreground:#fffdf7;
-  --popover:#2b2b2b;--popover-foreground:#fffdf7;
-  --primary:#fd4ad0;--primary-foreground:#1c1c1c;
-  --secondary:#49223d;--secondary-foreground:#f3c3e6;
-  --muted:#2b2b2b;--muted-foreground:#b0b0b0;
-  --accent:#414141;--accent-foreground:#fffdf7;
-  --destructive:oklch(0.704 0.191 22.216);
-  --border:#414141;--input:#767676;--ring:#ceff32;--focus-gap:#2b2b2b;
-  --link:#ff68d8;--brand:#fd4ad0;--brand-soft:#f3c3e6;
-  --highlight:#ceff32;--highlight-foreground:#1c1c1c;--highlight-text:#ceff32;
-}
+/* Ruoli tipografici (type-display-xl … type-label): generati dal design system in vendor/bundle.css,
+   da tokens/typography-web.tokens.json. */
 
-@layer base{
-a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
-a:hover{text-decoration-thickness:2px}
-a:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:4px}
-}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
