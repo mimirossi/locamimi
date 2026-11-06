@@ -30,6 +30,17 @@ p,h1,h2,dl,dd{margin:0}
 .vetrina [class*="--cover-size"]{--cover-size:clamp(14rem,30vw,30rem)!important}
 .vetrina [class*="--step-x"]{--step-x:clamp(6rem,16vw,15rem)!important}
 .vetrina [class*="--step-y"]{--step-y:clamp(1.75rem,3.5vw,3rem)!important}
+.vetrina-hint{margin-bottom:var(--stack-lg)}
+
+/* Entrata al caricamento: la riga e poi le card, una dopo l'altra nell'ordine dei set.
+   Usa translate (non transform) per non toccare la posizione in diagonale del componente.
+   Finita l'entrata, app.js aggiunge .is-entered così girare la pila non la riavvia. */
+@keyframes locamimi-fade-up{from{opacity:0;translate:0 var(--stack-md)}}
+@keyframes locamimi-card-in{from{opacity:0;translate:calc(var(--gap-2xl) * -1) var(--section-sm)}}
+.vetrina-hint{animation:locamimi-fade-up .5s cubic-bezier(.2,.7,.2,1) .1s backwards}
+.vetrina #carousel li{animation:locamimi-card-in .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(.3s + var(--i,0) * .1s)}
+.vetrina.is-entered #carousel li{animation:none}
+
 /* Titolo delle card: stesso ruolo del DS (Titolo 2, DAMN maiuscolo), ridotto per le cover del carosello */
 .vetrina [data-slot="card-title"]{font-size:32px}
 

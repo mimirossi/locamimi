@@ -71,6 +71,12 @@
     return h(L.CoverCarousel, { items: items });
   }
 
+  /* Fine dell'animazione di entrata (site.css): da qui in poi le card non la ripetono quando la pila gira */
+  setTimeout(function () {
+    var v = document.querySelector('.vetrina');
+    if (v) v.classList.add('is-entered');
+  }, 300 + SETS.length * 100 + 700 + 100);
+
   var tree = h(Vetrina);
   if (L.TooltipProvider) tree = h(L.TooltipProvider, null, tree);
   ReactDOM.createRoot(document.getElementById('carousel')).render(tree);
