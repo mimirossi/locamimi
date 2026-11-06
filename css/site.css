@@ -30,7 +30,7 @@ p,h1,h2,dl,dd{margin:0}
 .vetrina [class*="--cover-size"]{--cover-size:clamp(14rem,30vw,30rem)!important}
 .vetrina [class*="--step-x"]{--step-x:clamp(6rem,16vw,15rem)!important}
 .vetrina [class*="--step-y"]{--step-y:clamp(1.75rem,3.5vw,3rem)!important}
-.vetrina-hint{margin-bottom:var(--stack-lg)}
+.vetrina-hint{margin-bottom:var(--stack-lg);color:var(--accent-text)}
 
 /* Entrata al caricamento: la riga e poi le card, una dopo l'altra nell'ordine dei set.
    Usa translate (non transform) per non toccare la posizione in diagonale del componente.
